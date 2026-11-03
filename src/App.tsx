@@ -42,7 +42,7 @@ function getRandomItemType(): ItemType {
 
 export default function App() {
   const [gameState, setGameState] = useState<GameState>('READY');
-  const [timeLeft, setTimeLeft] = useState<number>(40);
+  const [timeLeft, setTimeLeft] = useState<number>(30);
   const [stats, setStats] = useState<GameStats>({
     score: 0,
     combo: 0,
@@ -114,16 +114,15 @@ export default function App() {
 
   // Speed / Frenzy progression multiplier
   const getSpeedMultiplier = useCallback(() => {
-    const elapsed = 40 - timeLeft;
-    if (elapsed > 30) return 2.0; // Frenzy in last 10s
-    if (elapsed > 20) return 1.6;
-    if (elapsed > 10) return 1.3;
+    const elapsed = 30 - timeLeft;
+    if (elapsed > 20) return 2.0; // Frenzy in last 10s
+    if (elapsed > 10) return 1.5;
     return 1.0;
   }, [timeLeft]);
 
   // Start Game
   const startGame = () => {
-    setTimeLeft(40);
+    setTimeLeft(30);
     setStats({
       score: 0,
       combo: 0,

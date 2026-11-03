@@ -661,7 +661,7 @@ class BananaGame {
   constructor() {
     this.appEl = document.getElementById('app');
     this.gameState = 'READY'; // READY, PLAYING, GAME_OVER
-    this.timeLeft = 40;
+    this.timeLeft = 30;
     this.timer = null;
     this.stats = {
       score: 0,
@@ -691,10 +691,9 @@ class BananaGame {
   }
 
   getSpeedMultiplier() {
-    const elapsed = 40 - this.timeLeft;
-    if (elapsed > 30) return 2.0;
-    if (elapsed > 20) return 1.6;
-    if (elapsed > 10) return 1.3;
+    const elapsed = 30 - this.timeLeft;
+    if (elapsed > 20) return 2.0;
+    if (elapsed > 10) return 1.5;
     return 1.0;
   }
 
@@ -754,7 +753,7 @@ class BananaGame {
   }
 
   startGame() {
-    this.timeLeft = 40;
+    this.timeLeft = 30;
     this.stats = {
       score: 0,
       combo: 0,
@@ -1036,7 +1035,7 @@ class BananaGame {
           <div class="flex flex-col items-center my-3 text-center">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs font-black mb-2 shadow-sm">
               <span>✨</span>
-              <span>40초 스릴 만점 바나나 먹방 아케이드</span>
+              <span>30초 스릴 만점 바나나 먹방 아케이드</span>
             </div>
 
             <h1 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-amber-300 to-amber-500 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
@@ -1081,7 +1080,7 @@ class BananaGame {
             </div>
 
             <div class="text-[11px] text-amber-200/80 text-center pt-1 font-medium">
-              ⚡ 40초 동안 점점 스피드업! 집중해서 최고 기록에 도전하세요!
+              ⚡ 30초 동안 점점 스피드업! 집중해서 최고 기록에 도전하세요!
             </div>
           </div>
 
@@ -1089,7 +1088,7 @@ class BananaGame {
           <div class="w-full space-y-2.5 mt-4">
             <button id="btn-start-game" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-stone-950 font-black text-xl flex items-center justify-center gap-2 shadow-[0_6px_0_#92400E] active:shadow-[0_2px_0_#92400E] active:translate-y-1 transition-all cursor-pointer">
               <span>▶</span>
-              <span>게임 시작 (40초 도전!)</span>
+              <span>게임 시작 (30초 도전!)</span>
             </button>
 
             <button id="btn-open-leaderboard" class="w-full py-2.5 rounded-xl bg-stone-900/60 hover:bg-stone-800/80 border border-amber-600/30 text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
