@@ -187,20 +187,18 @@ function renderCute3DItem(type: ItemType, isFrenzy: boolean) {
             {/* Bottom Tip Point */}
             <circle cx="62" cy="85" r="3" fill="#713F12" />
 
-            {/* CUTE SMILING FACE ON BANANA (단색 홍조, 큰 눈, 흰 안광 큰 거 하나 작은 거 하나, 작은 입) */}
-            {/* Solid Flat Pink Blushing Cheeks (햄홍조 그라데이션 x, 단색처리) */}
-            <circle cx="50" cy="58" r="4.5" fill="#F472B6" />
-            <circle cx="72" cy="62" r="4.5" fill="#F472B6" />
+            {/* CUTE SMILING FACE ON BANANA (파스텔 분홍 가로 타원 홍조, 큰 눈, 단일 큰 안광, 작은 입) */}
+            {/* Pastel Pink Horizontal Oval Blushing Cheeks */}
+            <ellipse cx="50" cy="58" rx="5.5" ry="3" fill="#FBCFE8" />
+            <ellipse cx="72" cy="62" rx="5.5" ry="3" fill="#FBCFE8" />
 
-            {/* Left Big Sparkly Eye */}
+            {/* Left Big Sparkly Eye with Single Big Reflection */}
             <circle cx="56" cy="52" r="5.5" fill="#1C140E" />
-            <circle cx="54.5" cy="50" r="2.2" fill="#FFFFFF" />
-            <circle cx="57.8" cy="53.8" r="1.1" fill="#FFFFFF" />
+            <circle cx="54.5" cy="50" r="2.4" fill="#FFFFFF" />
 
-            {/* Right Big Sparkly Eye */}
+            {/* Right Big Sparkly Eye with Single Big Reflection */}
             <circle cx="68" cy="54" r="5.5" fill="#1C140E" />
-            <circle cx="66.5" cy="52" r="2.2" fill="#FFFFFF" />
-            <circle cx="69.8" cy="55.8" r="1.1" fill="#FFFFFF" />
+            <circle cx="66.5" cy="52" r="2.4" fill="#FFFFFF" />
 
             {/* Small Cute Mouth */}
             <path
@@ -348,19 +346,17 @@ function renderCute3DItem(type: ItemType, isFrenzy: boolean) {
             {/* Specular 3D Light Highlight Streak */}
             <ellipse cx="38" cy="42" rx="10" ry="6" fill="#FFFFFF" opacity="0.35" transform="rotate(-25 38 42)" />
 
-            {/* Solid Pink Blushing Cheeks (단색처리) */}
-            <circle cx="36" cy="64" r="4.5" fill="#F472B6" />
-            <circle cx="64" cy="64" r="4.5" fill="#F472B6" />
+            {/* Pastel Pink Horizontal Oval Blushing Cheeks */}
+            <ellipse cx="36" cy="64" rx="5.5" ry="3" fill="#FBCFE8" />
+            <ellipse cx="64" cy="64" rx="5.5" ry="3" fill="#FBCFE8" />
 
-            {/* Left Big Cute Sparkly Eye (큰 거 하나 작은 거 하나) */}
+            {/* Left Big Cute Sparkly Eye (Single Big Reflection) */}
             <circle cx="42" cy="56" r="6" fill="#0F172A" />
-            <circle cx="40.5" cy="54" r="2.4" fill="#FFFFFF" />
-            <circle cx="44" cy="58" r="1.1" fill="#FFFFFF" />
+            <circle cx="40.5" cy="53.8" r="2.6" fill="#FFFFFF" />
 
-            {/* Right Big Cute Sparkly Eye (큰 거 하나 작은 거 하나) */}
+            {/* Right Big Cute Sparkly Eye (Single Big Reflection) */}
             <circle cx="58" cy="56" r="6" fill="#0F172A" />
-            <circle cx="56.5" cy="54" r="2.4" fill="#FFFFFF" />
-            <circle cx="60" cy="58" r="1.1" fill="#FFFFFF" />
+            <circle cx="56.5" cy="53.8" r="2.6" fill="#FFFFFF" />
 
             {/* Small Cute Smile */}
             <path

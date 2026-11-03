@@ -11,7 +11,7 @@ export const MonkeyCharacter: React.FC<MonkeyCharacterProps> = ({ mood, combo })
   const isFever = combo >= 8 || mood === 'fever';
   const isSoot = mood === 'eating_bad';
 
-  // Unified Beige Palette for the entire body
+  // Unified Soft Beige Palette for the entire body
   const beigeBase = isSoot ? '#4B4643' : '#DBCBB6';
   const beigeShadow = isSoot ? '#363230' : '#C4B29B';
   const beigeHighlight = isSoot ? '#605A56' : '#EFE4D6';
@@ -21,7 +21,7 @@ export const MonkeyCharacter: React.FC<MonkeyCharacterProps> = ({ mood, combo })
   const faceShadow = isSoot ? '#544D49' : '#E8DFD3';
 
   return (
-    <div className="relative w-52 h-52 sm:w-60 sm:h-60 flex items-center justify-center select-none">
+    <div className="relative w-56 h-52 sm:w-64 sm:h-56 flex items-center justify-center select-none">
       {/* Fever Glow */}
       {isFever && (
         <motion.div
@@ -50,7 +50,7 @@ export const MonkeyCharacter: React.FC<MonkeyCharacterProps> = ({ mood, combo })
 
       {/* Main SVG Cute Beige Monkey */}
       <motion.svg
-        viewBox="0 0 240 240"
+        viewBox="0 0 240 220"
         className="w-full h-full filter drop-shadow-[0_12px_24px_rgba(0,0,0,0.25)]"
         animate={
           isSoot
@@ -96,79 +96,79 @@ export const MonkeyCharacter: React.FC<MonkeyCharacterProps> = ({ mood, combo })
           </radialGradient>
         </defs>
 
-        {/* 1. Curved Tail (Beige) */}
+        {/* 1. Cute Smaller Tail (꼬리도 좀 작게) */}
         <path
-          d="M 145 174 C 172 185 198 178 206 160 C 212 142 202 134 195 137 C 188 140 192 152 183 161 C 168 173 150 170 145 174 Z"
+          d="M 136 160 C 154 168 170 163 175 149 C 178 138 172 133 167 135 C 163 137 166 145 160 151 C 150 159 140 157 136 160 Z"
           fill={beigeShadow}
           stroke={beigeBase}
           strokeWidth="1.2"
         />
 
-        {/* 2. Smaller Beige Ears without Pink Part (귀에 분홍 부분 삭제, 귀는 좀 더 작게) */}
+        {/* 2. Small Beige Ears on the sides of the wide head (귀는 좀 더 작게, 분홍 부분 없음) */}
         {/* Left Ear */}
-        <circle cx="64" cy="106" r="15" fill="url(#earBeige)" />
+        <circle cx="52" cy="98" r="13" fill="url(#earBeige)" />
         {/* Right Ear */}
-        <circle cx="176" cy="106" r="15" fill="url(#earBeige)" />
+        <circle cx="188" cy="98" r="13" fill="url(#earBeige)" />
 
-        {/* 3. Small Chubby Body (Beige 통일) */}
-        <ellipse cx="120" cy="166" rx="30" ry="26" fill="url(#beigeBody)" />
+        {/* 3. Significantly Smaller Cute Body (원숭이 몸을 더 작게 - 귀여운 대두/초소형 몸체 비율) */}
+        <ellipse cx="120" cy="158" rx="20" ry="17" fill="url(#beigeBody)" />
 
-        {/* Two Stubby Cute Sitting Feet */}
-        <ellipse cx="104" cy="182" rx="13" ry="14" fill="url(#beigeBody)" />
-        <ellipse cx="136" cy="182" rx="13" ry="14" fill="url(#beigeBody)" />
+        {/* Two Tiny Stubby Sitting Feet */}
+        <ellipse cx="108" cy="170" rx="9" ry="10" fill="url(#beigeBody)" />
+        <ellipse cx="132" cy="170" rx="9" ry="10" fill="url(#beigeBody)" />
 
-        {/* Paws */}
+        {/* Small Hands / Paws */}
         {mood === 'dodged' ? (
           <g>
-            <ellipse cx="90" cy="156" rx="10" ry="8" fill="url(#beigeBody)" />
-            <ellipse cx="150" cy="148" rx="10" ry="8" fill="url(#beigeBody)" />
-            <text x="154" y="142" fontSize="14">✨</text>
+            <ellipse cx="98" cy="152" rx="7" ry="6" fill="url(#beigeBody)" />
+            <ellipse cx="144" cy="146" rx="7" ry="6" fill="url(#beigeBody)" />
+            <text x="148" y="140" fontSize="13">✨</text>
           </g>
         ) : mood === 'eating_good' || isFever ? (
           <g>
-            <ellipse cx="88" cy="146" rx="10" ry="9" fill="url(#beigeBody)" />
-            <ellipse cx="152" cy="146" rx="10" ry="9" fill="url(#beigeBody)" />
+            <ellipse cx="96" cy="144" rx="7" ry="6" fill="url(#beigeBody)" />
+            <ellipse cx="144" cy="144" rx="7" ry="6" fill="url(#beigeBody)" />
           </g>
         ) : (
           <g>
-            <ellipse cx="96" cy="160" rx="10" ry="8" fill="url(#beigeBody)" />
-            <ellipse cx="144" cy="160" rx="10" ry="8" fill="url(#beigeBody)" />
+            <ellipse cx="103" cy="155" rx="7" ry="6" fill="url(#beigeBody)" />
+            <ellipse cx="137" cy="155" rx="7" ry="6" fill="url(#beigeBody)" />
           </g>
         )}
 
-        {/* 4. BIGGER HEAD (머리 좀 더 크게: radius 54, 귀여운 대두 비율) */}
-        <circle cx="120" cy="102" r="54" fill="url(#beigeHead)" />
+        {/* 4. WIDER HEAD (얼굴은 가로로 조금 더 길게: rx=64, ry=50) */}
+        <ellipse cx="120" cy="98" rx="64" ry="50" fill="url(#beigeHead)" />
 
-        {/* 5. Cute Soft Cream Face Mask */}
+        {/* 5. WIDER CREAM FACE MASK (얼굴의 밝은 부분도 좀 더 길게: 가로로 확장) */}
         <path
-          d="M 80 102 C 78 80 100 75 120 88 C 140 75 162 80 160 102 C 158 122 144 133 120 134 C 96 133 82 122 80 102 Z"
+          d="M 66 98 C 64 74 92 70 120 84 C 148 70 176 74 174 98 C 172 120 152 132 120 133 C 88 132 68 120 66 98 Z"
           fill="url(#facePatch)"
         />
 
-        {/* 6. Cheeks: Solid Pink Blush without Gradient (햄홍조 그라데이션 x, 단색처리) */}
+        {/* 6. PASTEL PINK HORIZONTAL OVAL BLUSH (홍조는 가로로 긴 타원이고 색은 파스텔 분홍 #FBCFE8) */}
         {!isSoot && (
           <>
-            <circle cx="92" cy="115" r="7" fill="#F472B6" />
-            <circle cx="148" cy="115" r="7" fill="#F472B6" />
+            <ellipse cx="82" cy="112" rx="9.5" ry="4.5" fill="#FBCFE8" />
+            <ellipse cx="158" cy="112" rx="9.5" ry="4.5" fill="#FBCFE8" />
           </>
         )}
 
-        {/* 7. Tiny Nose (코는 작게: small delicate dot) */}
-        <ellipse cx="120" cy="108" rx="2.8" ry="2" fill="#2E1C12" />
+        {/* 7. Tiny Nose (코는 작게) */}
+        <ellipse cx="120" cy="106" rx="2.5" ry="1.8" fill="#2E1C12" />
 
-        {/* 8. BIG EYES WITH 1 BIG & 1 SMALL WHITE REFLECTION (눈은 크게, 안광은 흰거 큰 거 하나 작은 거 하나) */}
+        {/* 8. WIDER EYE SPACING & ONLY ONE BIG REFLECTION (원숭이 눈 사이를 좀 더 멀게, 눈은 안광 작은 것 삭제) */}
         {isSoot ? (
-          // Soot Dizzy Spiral Eyes
+          // Soot Dizzy Spiral Eyes (Wider Spacing: cx=94, cx=146)
           <g>
             <path
-              d="M 96 95 A 6 6 0 1 0 106 101 A 3 3 0 1 0 101 95"
+              d="M 88 94 A 6 6 0 1 0 98 100 A 3 3 0 1 0 93 94"
               fill="none"
               stroke="#0F172A"
               strokeWidth="2.5"
               strokeLinecap="round"
             />
             <path
-              d="M 134 95 A 6 6 0 1 0 144 101 A 3 3 0 1 0 139 95"
+              d="M 142 94 A 6 6 0 1 0 152 100 A 3 3 0 1 0 147 94"
               fill="none"
               stroke="#0F172A"
               strokeWidth="2.5"
@@ -176,93 +176,84 @@ export const MonkeyCharacter: React.FC<MonkeyCharacterProps> = ({ mood, combo })
             />
           </g>
         ) : mood === 'eating_good' ? (
-          // Happy Squeezed Joyful Eyes ( ^ ‿ ^ )
+          // Happy Squeezed Joyful Eyes (Wider Spacing)
           <g>
             <path
-              d="M 93 98 Q 103 87 113 98"
+              d="M 85 96 Q 94 85 103 96"
               fill="none"
               stroke="#1C140E"
-              strokeWidth="4"
+              strokeWidth="3.8"
               strokeLinecap="round"
             />
             <path
-              d="M 127 98 Q 137 87 147 98"
-              fill="none"
-              stroke="#1C140E"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </g>
-        ) : mood === 'dodged' ? (
-          // One big shiny eye with 2 reflections + one cute wink
-          <g>
-            {/* Left Eye: Big Dark Eye with 1 Big + 1 Small Reflection */}
-            <circle cx="102" cy="97" r="11" fill="#1C140E" />
-            <circle cx="99" cy="93.5" r="4.2" fill="#FFFFFF" />
-            <circle cx="105.5" cy="100.5" r="2" fill="#FFFFFF" />
-
-            {/* Right Eye: Wink Arc */}
-            <path
-              d="M 127 98 Q 137 90 147 98"
+              d="M 137 96 Q 146 85 155 96"
               fill="none"
               stroke="#1C140E"
               strokeWidth="3.8"
               strokeLinecap="round"
             />
           </g>
-        ) : (
-          // Default & Mouth-Open: BIG SHINY EYES (안광: 큰 거 하나, 작은 거 하나)
+        ) : mood === 'dodged' ? (
+          // One big shiny eye with single big reflection + one cute wink
           <g>
-            {/* Left Big Eye */}
-            <circle cx="102" cy="97" r="11" fill="#1C140E" />
-            {/* Big reflection */}
-            <circle cx="99" cy="93.5" r="4.2" fill="#FFFFFF" />
-            {/* Small reflection */}
-            <circle cx="105.5" cy="100.5" r="2" fill="#FFFFFF" />
+            {/* Left Eye: Big Dark Eye with ONLY ONE BIG reflection */}
+            <circle cx="94" cy="95" r="10.5" fill="#1C140E" />
+            <circle cx="91.5" cy="91.5" r="4.3" fill="#FFFFFF" />
 
-            {/* Right Big Eye */}
-            <circle cx="138" cy="97" r="11" fill="#1C140E" />
-            {/* Big reflection */}
-            <circle cx="135" cy="93.5" r="4.2" fill="#FFFFFF" />
-            {/* Small reflection */}
-            <circle cx="141.5" cy="100.5" r="2" fill="#FFFFFF" />
+            {/* Right Eye: Wink Arc */}
+            <path
+              d="M 137 96 Q 146 88 155 96"
+              fill="none"
+              stroke="#1C140E"
+              strokeWidth="3.6"
+              strokeLinecap="round"
+            />
+          </g>
+        ) : (
+          // Default & Mouth-Open: WIDER EYES WITH ONLY ONE BIG REFLECTION (작은 안광 삭제!)
+          <g>
+            {/* Left Big Eye (cx = 94) */}
+            <circle cx="94" cy="95" r="10.5" fill="#1C140E" />
+            {/* Only One Big Reflection */}
+            <circle cx="91.5" cy="91.5" r="4.3" fill="#FFFFFF" />
+
+            {/* Right Big Eye (cx = 146) */}
+            <circle cx="146" cy="95" r="10.5" fill="#1C140E" />
+            {/* Only One Big Reflection */}
+            <circle cx="143.5" cy="91.5" r="4.3" fill="#FFFFFF" />
           </g>
         )}
 
-        {/* 9. SMALL MOUTH (입은 작게: delicate cute mouth) */}
+        {/* 9. Small Mouth (입은 작게) */}
         {isSoot ? (
-          // Wobbly charred mouth
           <path
-            d="M 114 118 Q 117 115 120 118 Q 123 121 126 118"
+            d="M 115 116 Q 117.5 113 120 116 Q 122.5 119 125 116"
             fill="none"
             stroke="#0F172A"
-            strokeWidth="2.2"
+            strokeWidth="2"
             strokeLinecap="round"
           />
         ) : mood === 'eating_good' ? (
-          // Satisfied small chewing smile with a tiny banana crumb
           <g>
             <path
-              d="M 114 116 Q 120 123 126 116"
+              d="M 115 114 Q 120 120 125 114"
               fill="#881337"
               stroke="#1C140E"
               strokeWidth="1.8"
             />
-            <circle cx="129" cy="115" r="2.5" fill="#FACC15" />
+            <circle cx="127" cy="113" r="2.2" fill="#FACC15" />
           </g>
         ) : mood === 'mouth_open' ? (
-          // Small open round mouth
           <g>
-            <ellipse cx="120" cy="117" rx="5.5" ry="5" fill="#881337" stroke="#1C140E" strokeWidth="1.8" />
-            <ellipse cx="120" cy="118.5" rx="3" ry="2.2" fill="#F43F5E" />
+            <ellipse cx="120" cy="115" rx="5" ry="4.5" fill="#881337" stroke="#1C140E" strokeWidth="1.8" />
+            <ellipse cx="120" cy="116.5" rx="2.8" ry="2" fill="#F43F5E" />
           </g>
         ) : (
-          // Small cute sweet smile
           <path
-            d="M 115 116 Q 120 121 125 116"
+            d="M 115 114 Q 120 118 125 114"
             fill="none"
             stroke="#1C140E"
-            strokeWidth="2.4"
+            strokeWidth="2.2"
             strokeLinecap="round"
           />
         )}
