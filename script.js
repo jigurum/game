@@ -661,7 +661,7 @@ class BananaGame {
   constructor() {
     this.appEl = document.getElementById('app');
     this.gameState = 'READY'; // READY, PLAYING, GAME_OVER
-    this.timeLeft = 60;
+    this.timeLeft = 40;
     this.timer = null;
     this.stats = {
       score: 0,
@@ -691,10 +691,10 @@ class BananaGame {
   }
 
   getSpeedMultiplier() {
-    const elapsed = 60 - this.timeLeft;
-    if (elapsed > 45) return 2.0;
-    if (elapsed > 30) return 1.6;
-    if (elapsed > 15) return 1.3;
+    const elapsed = 40 - this.timeLeft;
+    if (elapsed > 30) return 2.0;
+    if (elapsed > 20) return 1.6;
+    if (elapsed > 10) return 1.3;
     return 1.0;
   }
 
@@ -754,7 +754,7 @@ class BananaGame {
   }
 
   startGame() {
-    this.timeLeft = 60;
+    this.timeLeft = 40;
     this.stats = {
       score: 0,
       combo: 0,
@@ -912,10 +912,10 @@ class BananaGame {
   bindEvents() {
     window.addEventListener('keydown', (e) => {
       if (this.gameState !== 'PLAYING') return;
-      if (e.code === 'Space' || e.code === 'ArrowRight' || e.code === 'KeyD') {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         e.preventDefault();
         this.onEat();
-      } else if (e.code === 'ArrowLeft' || e.code === 'KeyA' || e.code === 'Escape') {
+      } else if (e.code === 'ArrowRight' || e.code === 'KeyD' || e.code === 'Space' || e.code === 'Escape') {
         e.preventDefault();
         this.onPass();
       }
@@ -952,7 +952,7 @@ class BananaGame {
       }`;
       statusPromptEl.innerHTML = `
         <span class="text-base">${isBomb ? '💣' : '🍌'}</span>
-        <span>${isBomb ? '귀여운 폭탄이다! [안 먹기] 로 피하기!' : '맛있는 바나나! [먹기] 로 냠냠!'}</span>
+        <span>${isBomb ? '폭탄이다! 오른쪽 [→] 로 안먹기!' : '바나나다! 왼쪽 [←] 로 먹기!'}</span>
       `;
     }
   }
@@ -1036,7 +1036,7 @@ class BananaGame {
           <div class="flex flex-col items-center my-3 text-center">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-300 text-xs font-black mb-2 shadow-sm">
               <span>✨</span>
-              <span>60초 스릴 만점 바나나 먹방 아케이드</span>
+              <span>40초 스릴 만점 바나나 먹방 아케이드</span>
             </div>
 
             <h1 class="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-amber-300 to-amber-500 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
@@ -1059,9 +1059,9 @@ class BananaGame {
 
             <div class="grid grid-cols-2 gap-2">
               <div class="p-2.5 rounded-xl bg-amber-950/50 border border-amber-600/50 flex items-start gap-2.5">
-                <span class="text-3xl">🍌</span>
+                <span class="text-3xl font-black text-amber-300">←</span>
                 <div>
-                  <div class="font-black text-amber-300">[먹기] 버튼</div>
+                  <div class="font-black text-amber-300">왼쪽 [먹기] 화살표</div>
                   <div class="text-[11px] text-stone-300 mt-0.5">
                     바나나 먹으면 <span class="text-emerald-400 font-bold">+100점</span> & 콤보!
                   </div>
@@ -1069,11 +1069,11 @@ class BananaGame {
               </div>
 
               <div class="p-2.5 rounded-xl bg-rose-950/50 border border-rose-700/50 flex items-start gap-2.5">
-                <span class="text-3xl">💣</span>
+                <span class="text-3xl font-black text-rose-300">→</span>
                 <div>
-                  <div class="font-black text-rose-300">[안 먹기] 버튼</div>
+                  <div class="font-black text-rose-300">오른쪽 [안먹기] 화살표</div>
                   <div class="text-[11px] text-stone-300 mt-0.5">
-                    폭탄 피하면 <span class="text-emerald-400 font-bold">+50점</span>!<br />
+                    폭탄 넘기면 <span class="text-emerald-400 font-bold">+50점</span>!<br />
                     먹으면 <span class="text-rose-400 font-bold">-150점</span>
                   </div>
                 </div>
@@ -1081,7 +1081,7 @@ class BananaGame {
             </div>
 
             <div class="text-[11px] text-amber-200/80 text-center pt-1 font-medium">
-              ⚡ 60초 동안 점점 스피드업! 집중해서 최고 기록에 도전하세요!
+              ⚡ 40초 동안 점점 스피드업! 집중해서 최고 기록에 도전하세요!
             </div>
           </div>
 
@@ -1089,7 +1089,7 @@ class BananaGame {
           <div class="w-full space-y-2.5 mt-4">
             <button id="btn-start-game" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-stone-950 font-black text-xl flex items-center justify-center gap-2 shadow-[0_6px_0_#92400E] active:shadow-[0_2px_0_#92400E] active:translate-y-1 transition-all cursor-pointer">
               <span>▶</span>
-              <span>게임 시작 (60초 도전!)</span>
+              <span>게임 시작 (40초 도전!)</span>
             </button>
 
             <button id="btn-open-leaderboard" class="w-full py-2.5 rounded-xl bg-stone-900/60 hover:bg-stone-800/80 border border-amber-600/30 text-amber-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer">
@@ -1187,7 +1187,7 @@ class BananaGame {
                 <div class="w-full flex items-center justify-between z-10">
                   <div id="status-prompt-badge" class="px-3.5 py-1.5 rounded-2xl text-xs font-black flex items-center gap-1.5 border shadow-sm transition-colors ${isBomb ? 'bg-rose-500/25 text-rose-200 border-rose-400/50 animate-pulse' : 'bg-amber-400/25 text-amber-200 border-amber-400/50'}">
                     <span class="text-base">${isBomb ? '💣' : '🍌'}</span>
-                    <span>${isBomb ? '귀여운 폭탄이다! [안 먹기] 로 피하기!' : '맛있는 바나나! [먹기] 로 냠냠!'}</span>
+                    <span>${isBomb ? '폭탄이다! 오른쪽 [→] 로 안먹기!' : '바나나다! 왼쪽 [←] 로 먹기!'}</span>
                   </div>
 
                   <div class="flex items-center gap-1.5 px-3 py-1 rounded-2xl bg-stone-950/80 border border-stone-800 text-[11px] text-stone-300 shadow-sm">
@@ -1234,33 +1234,39 @@ class BananaGame {
             </div>
 
             <div class="w-full flex items-center justify-between text-[11px] text-amber-200/60 px-3 mt-1.5">
-              <span>← [안 먹기] 폭탄 방어</span>
-              <span class="hidden sm:inline font-mono">단축키: [←/A] or [→/Space]</span>
-              <span>[먹기] 바나나 냠냠 →</span>
+              <span class="text-amber-300 font-bold">← [먹기] 바나나</span>
+              <span class="hidden sm:inline font-mono">단축키: [←/A] 먹기 / [→/D/Space] 안먹기</span>
+              <span class="text-rose-300 font-bold">[안먹기] 폭탄 →</span>
             </div>
           </div>
 
-          <!-- Bottom Touch Controls -->
+          <!-- Bottom Touch Controls (왼쪽 먹기 ← / 오른쪽 안먹기 → 화살표 버튼) -->
           <div class="w-full max-w-xl mx-auto px-4 py-3 select-none">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
-              <button id="btn-action-pass" class="relative group flex flex-col items-center justify-center py-4 px-3 sm:py-5 sm:px-4 rounded-3xl bg-gradient-to-b from-rose-500 via-rose-600 to-rose-700 text-white shadow-[0_8px_0_#881337] active:shadow-[0_2px_0_#881337] active:translate-y-1.5 transition-all border-2 border-rose-300/60 cursor-pointer touch-manipulation overflow-hidden">
-                <div class="absolute inset-x-3 top-1.5 h-4 rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none"></div>
-                <div class="relative z-10 flex items-center gap-2 mb-1">
-                  <span class="text-2xl sm:text-3xl filter drop-shadow">🚫</span>
-                  <span class="text-xl sm:text-2xl font-black tracking-wide text-white drop-shadow">안 먹기</span>
-                </div>
-                <span class="relative z-10 text-xs font-bold text-rose-100 mt-0.5">폭탄 피하기 (회피)</span>
-                <span class="relative z-10 hidden sm:inline-block text-[10px] font-mono text-rose-100 mt-1.5 px-2.5 py-0.5 bg-rose-900/60 border border-rose-400/30 rounded-full">[ ← ] or [ A ]</span>
-              </button>
-
+              <!-- Left Arrow Button: 먹기 -->
               <button id="btn-action-eat" class="relative group flex flex-col items-center justify-center py-4 px-3 sm:py-5 sm:px-4 rounded-3xl bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 text-stone-950 shadow-[0_8px_0_#92400E] active:shadow-[0_2px_0_#92400E] active:translate-y-1.5 transition-all border-2 border-amber-300/80 cursor-pointer touch-manipulation overflow-hidden">
                 <div class="absolute inset-x-3 top-1.5 h-4 rounded-full bg-gradient-to-b from-white/45 to-transparent pointer-events-none"></div>
-                <div class="relative z-10 flex items-center gap-2 mb-1">
-                  <span class="text-2xl sm:text-3xl filter drop-shadow">🍌</span>
-                  <span class="text-xl sm:text-2xl font-black tracking-wide text-stone-950 drop-shadow">먹 기 !</span>
+                <div class="relative z-10 flex flex-col items-center justify-center">
+                  <svg class="w-12 h-12 sm:w-14 sm:h-14 text-stone-950 filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] transition-transform group-active:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                  </svg>
+                  <span class="text-xl sm:text-2xl font-black tracking-wide text-stone-950 drop-shadow mt-0.5">먹기</span>
+                  <span class="text-[10px] font-mono font-bold text-amber-950/80 mt-0.5">[ ← ]</span>
                 </div>
-                <span class="relative z-10 text-xs font-black text-amber-950 mt-0.5">바나나 냠냠 (득점)</span>
-                <span class="relative z-10 hidden sm:inline-block text-[10px] font-mono text-stone-900 font-bold mt-1.5 px-2.5 py-0.5 bg-amber-300/90 border border-amber-600/40 rounded-full">[ Space ] or [ → ]</span>
+              </button>
+
+              <!-- Right Arrow Button: 안먹기 -->
+              <button id="btn-action-pass" class="relative group flex flex-col items-center justify-center py-4 px-3 sm:py-5 sm:px-4 rounded-3xl bg-gradient-to-b from-rose-500 via-rose-600 to-rose-700 text-white shadow-[0_8px_0_#881337] active:shadow-[0_2px_0_#881337] active:translate-y-1.5 transition-all border-2 border-rose-300/60 cursor-pointer touch-manipulation overflow-hidden">
+                <div class="absolute inset-x-3 top-1.5 h-4 rounded-full bg-gradient-to-b from-white/35 to-transparent pointer-events-none"></div>
+                <div class="relative z-10 flex flex-col items-center justify-center">
+                  <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] transition-transform group-active:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                  <span class="text-xl sm:text-2xl font-black tracking-wide text-white drop-shadow mt-0.5">안먹기</span>
+                  <span class="text-[10px] font-mono font-bold text-rose-100/90 mt-0.5">[ → ]</span>
+                </div>
               </button>
             </div>
           </div>

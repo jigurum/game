@@ -42,7 +42,7 @@ function getRandomItemType(): ItemType {
 
 export default function App() {
   const [gameState, setGameState] = useState<GameState>('READY');
-  const [timeLeft, setTimeLeft] = useState<number>(60);
+  const [timeLeft, setTimeLeft] = useState<number>(40);
   const [stats, setStats] = useState<GameStats>({
     score: 0,
     combo: 0,
@@ -114,16 +114,16 @@ export default function App() {
 
   // Speed / Frenzy progression multiplier
   const getSpeedMultiplier = useCallback(() => {
-    const elapsed = 60 - timeLeft;
-    if (elapsed > 45) return 2.0; // Frenzy in last 15s
-    if (elapsed > 30) return 1.6;
-    if (elapsed > 15) return 1.3;
+    const elapsed = 40 - timeLeft;
+    if (elapsed > 30) return 2.0; // Frenzy in last 10s
+    if (elapsed > 20) return 1.6;
+    if (elapsed > 10) return 1.3;
     return 1.0;
   }, [timeLeft]);
 
   // Start Game
   const startGame = () => {
-    setTimeLeft(60);
+    setTimeLeft(40);
     setStats({
       score: 0,
       combo: 0,
@@ -298,15 +298,15 @@ export default function App() {
     advanceToNextItem();
   }, [gameState, currentItem, nextItem, triggerMonkeyMood, addFloatingText]);
 
-  // Keyboard Shortcuts (Space / ArrowRight for Eat, ArrowLeft / A for Don't Eat)
+  // Keyboard Shortcuts (ArrowLeft / A for Eat, ArrowRight / D / Space for Don't Eat)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (gameState !== 'PLAYING') return;
 
-      if (e.code === 'Space' || e.code === 'ArrowRight' || e.code === 'KeyD') {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         e.preventDefault();
         handleEat();
-      } else if (e.code === 'ArrowLeft' || e.code === 'KeyA' || e.code === 'Escape') {
+      } else if (e.code === 'ArrowRight' || e.code === 'KeyD' || e.code === 'Space' || e.code === 'Escape') {
         e.preventDefault();
         handlePass();
       }
@@ -461,9 +461,9 @@ export default function App() {
 
             {/* Keyboard Guide */}
             <div className="w-full flex items-center justify-between text-[11px] text-amber-200/60 px-3 mt-1.5">
-              <span>← [안 먹기] 폭탄 방어</span>
-              <span className="hidden sm:inline font-mono">단축키: [←/A] or [→/Space]</span>
-              <span>[먹기] 바나나 냠냠 →</span>
+              <span className="text-amber-300 font-bold">← [먹기] 바나나</span>
+              <span className="hidden sm:inline font-mono">단축키: [←/A] 먹기 / [→/D/Space] 안먹기</span>
+              <span className="text-rose-300 font-bold">[안먹기] 폭탄 →</span>
             </div>
           </div>
 

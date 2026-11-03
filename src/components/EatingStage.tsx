@@ -34,7 +34,7 @@ export const EatingStage: React.FC<EatingStageProps> = ({
               : 'bg-amber-400/25 text-amber-200 border-amber-400/50'
           }`}>
             <span className="text-base">{isBomb ? '💣' : '🍌'}</span>
-            <span>{isBomb ? '귀여운 폭탄이다! [안 먹기] 로 피하기!' : '맛있는 바나나! [먹기] 로 냠냠!'}</span>
+            <span>{isBomb ? '폭탄이다! 오른쪽 [→] 로 안먹기!' : '바나나다! 왼쪽 [←] 로 먹기!'}</span>
           </div>
 
           {/* Next Item Mini Preview */}

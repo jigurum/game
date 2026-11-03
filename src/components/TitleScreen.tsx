@@ -67,7 +67,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
           <svg viewBox="0 0 16 16" className="w-4 h-4 fill-amber-300">
             <polygon points="8,1 10,6 15,8 10,10 8,15 6,10 1,8 6,6" />
           </svg>
-          <span>60초 스릴 만점 폴리곤 바나나 먹방</span>
+          <span>40초 스릴 만점 바나나 먹방</span>
         </motion.div>
 
         <h1 className="text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-amber-300 to-amber-500 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
@@ -90,28 +90,24 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
         </div>
 
         <div className="grid grid-cols-2 gap-2">
-          {/* Banana rule */}
+          {/* Banana rule (Left Arrow) */}
           <div className="p-2.5 rounded-xl bg-amber-950/50 border border-amber-600/50 flex items-start gap-2.5">
-            <div className="w-9 h-9 shrink-0 flex items-center justify-center">
-              <span className="text-3xl filter drop-shadow">🍌</span>
-            </div>
+            <span className="text-3xl font-black text-amber-300">←</span>
             <div>
-              <div className="font-black text-amber-300">[먹기] 버튼</div>
+              <div className="font-black text-amber-300">왼쪽 [먹기] 화살표</div>
               <div className="text-[11px] text-stone-300 mt-0.5">
                 바나나 먹으면 <span className="text-emerald-400 font-bold">+100점</span> & 콤보!
               </div>
             </div>
           </div>
 
-          {/* Bomb rule */}
+          {/* Bomb rule (Right Arrow) */}
           <div className="p-2.5 rounded-xl bg-rose-950/50 border border-rose-700/50 flex items-start gap-2.5">
-            <div className="w-9 h-9 shrink-0 flex items-center justify-center">
-              <span className="text-3xl filter drop-shadow">💣</span>
-            </div>
+            <span className="text-3xl font-black text-rose-300">→</span>
             <div>
-              <div className="font-black text-rose-300">[안 먹기] 버튼</div>
+              <div className="font-black text-rose-300">오른쪽 [안먹기] 화살표</div>
               <div className="text-[11px] text-stone-300 mt-0.5">
-                폭탄 피하면 <span className="text-emerald-400 font-bold">+50점</span>!<br />
+                폭탄 넘기면 <span className="text-emerald-400 font-bold">+50점</span>!<br />
                 먹으면 <span className="text-rose-400 font-bold">-150점</span>
               </div>
             </div>
@@ -119,7 +115,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
         </div>
 
         <div className="text-[11px] text-amber-200/80 text-center pt-1 font-medium">
-          ⚡ 60초 동안 점점 속도가 빨라져요! 집중해서 최고 기록에 도전하세요!
+          ⚡ 40초 동안 점점 속도가 빨라져요! 집중해서 최고 기록에 도전하세요!
         </div>
       </div>
 
@@ -133,7 +129,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
           className="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-stone-950 font-black text-xl flex items-center justify-center gap-2 shadow-[0_6px_0_#92400E] active:shadow-[0_2px_0_#92400E] active:translate-y-1 transition-all cursor-pointer"
         >
           <Play className="w-6 h-6 fill-stone-950 text-stone-950" />
-          <span>게임 시작 (60초 도전!)</span>
+          <span>게임 시작 (40초 도전!)</span>
         </motion.button>
 
         <button
