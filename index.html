@@ -1,22 +1,84 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>몽키 바나나 패닉! - 바나나 많이 먹기 게임</title>
     <meta name="description" content="다가오는 바나나는 먹고 폭탄은 피하라! 60초 동안 펼쳐지는 스릴 만점 바나나 먹방 아케이드 게임" />
     <meta property="og:title" content="몽키 바나나 패닉! - 바나나 많이 먹기 게임" />
     <meta property="og:description" content="다가오는 바나나는 먹고 폭탄은 피하라! 60초 동안 펼쳐지는 스릴 만점 바나나 먹방 아케이드 게임" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon (Cute Banana SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍌</text></svg>" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/game/assets/index-C9ow-9kR.js"></script>
-    <link rel="stylesheet" crossorigin href="/game/assets/index-DcQjGYkL.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Noto Sans KR"', 'sans-serif'],
+              display: ['Jua', 'Fredoka', 'sans-serif'],
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+            },
+            keyframes: {
+              breathing: {
+                '0%, 100%': { transform: 'scale(1) translateY(0px)' },
+                '50%': { transform: 'scale(1.025) translateY(-3px)' },
+              },
+              shake: {
+                '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '15%': { transform: 'translate(-5px, 3px) rotate(-1.5deg)' },
+                '30%': { transform: 'translate(5px, -3px) rotate(1.5deg)' },
+                '45%': { transform: 'translate(-4px, -2px) rotate(-1deg)' },
+                '60%': { transform: 'translate(4px, 2px) rotate(1deg)' },
+                '75%': { transform: 'translate(-2px, 1px) rotate(-0.5deg)' },
+                '90%': { transform: 'translate(2px, -1px) rotate(0.5deg)' },
+              },
+              wiggle: {
+                '0%, 100%': { transform: 'rotate(0deg)' },
+                '25%': { transform: 'rotate(-5deg)' },
+                '75%': { transform: 'rotate(5deg)' },
+              },
+              floatUp: {
+                '0%': { opacity: '0', transform: 'translate(-50%, -30%) scale(0.6)' },
+                '20%': { opacity: '1', transform: 'translate(-50%, -50%) scale(1.15)' },
+                '80%': { opacity: '1', transform: 'translate(-50%, -85%) scale(1)' },
+                '100%': { opacity: '0', transform: 'translate(-50%, -110%) scale(0.9)' },
+              },
+            },
+            animation: {
+              breathing: 'breathing 2.4s ease-in-out infinite',
+              shake: 'shake 0.35s ease-in-out',
+              wiggle: 'wiggle 0.3s ease-in-out',
+              floatUp: 'floatUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>*{-webkit-tap-highlight-color:transparent;touch-action:manipulation}body{color:#f5f5f4;-webkit-user-select:none;user-select:none;background-color:#0c0a09;margin:0;padding:0;font-family:Noto Sans KR,sans-serif;overflow-x:hidden}@keyframes softPulse{0%,to{opacity:.15;transform:scale(1)}50%{opacity:.3;transform:scale(1.08)}}.ambient-glow{animation:4s ease-in-out infinite softPulse}</style>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="bg-stone-950 text-stone-100 min-h-screen flex flex-col justify-between selection:bg-amber-500 selection:text-stone-950">
+    <!-- Ambient jungle warm backlight -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-amber-600/15 via-yellow-600/10 to-transparent blur-3xl ambient-glow"></div>
+      <div class="absolute -bottom-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-emerald-600/10 via-amber-700/10 to-transparent blur-3xl ambient-glow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Application Mounting Point -->
+    <div id="app" class="w-full flex-1 flex flex-col items-center justify-center p-2 sm:p-4"></div>
+
+    <!-- Standalone Vanilla JS Game Logic (Zero build tools required for GitHub Pages) -->
+    <script src="./script.js"></script>
   </body>
 </html>
-
